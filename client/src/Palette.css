@@ -1,0 +1,52 @@
+.palette-comp{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 50vh;
+    width: 80%;
+    background: #ffffff;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.123) 4px 5px 4px;
+}
+.info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 20%;
+}
+.palette{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 80%
+}
+.paletteName{
+    margin: 0px;
+}
+.palette div{
+    width: 20%;
+    height: 100%;
+}
+.info button{
+    height: 50px;
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.123) 4px 5px 4px;
+}
+.creatorButt{
+    background: #07D2FF;
+    color: #222;
+    width: 150px;
+}
+.likeButt{
+    background: #ff0048;
+    width: 100px;
+    color: #fff;
+}
+.deleteButt{
+    background: #0e0e0e;
+    width: 100px;
+    color: #fff;
+}

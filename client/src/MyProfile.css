@@ -1,0 +1,17 @@
+.myProfileDiv{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.myPalsDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+.myLikesDiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}

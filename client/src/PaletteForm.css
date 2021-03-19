@@ -1,0 +1,67 @@
+.inputs{
+  display: flex;
+  justify-content: space-evenly;
+  padding: 20px;
+}
+.submitButt{
+  width: 150px;
+  height: 55px;
+  border-radius: 25px;
+  background: #07FF88;
+  box-shadow: rgba(0, 0, 0, 0.123) 2px 2px 3px;
+}
+.palName{
+  border-radius: 20px;
+  border: solid #ccc 2px;
+  background: #ccc;
+  font-size: 20px;
+  height: 50px;
+  width: 250px;
+  box-shadow: rgba(0, 0, 0, 0.123) 2px 4px 1px;
+  border: solid black 1px;
+}
+.container{
+  display: flex;
+  justify-content: flex-start;
+  border: solid black 2px;
+  border-radius: 5px;
+  height: 65vh;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.color-input{
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 0px;
+  opacity: 0;
+}
+.color-box{
+  width: 20%;
+  height: 100%;
+  background: #aaaaaa;
+  text-align: center;
+  color: #ccc;
+}
+.pickerButt{
+  width: 50%;
+  height: 40px;
+  margin-top: 10px;
+  background: #222;
+  color: #fff;
+  border-radius: 20px;
+}
+.pickerButt:hover{
+
+}
+.hexText{
+  background: #222;
+}
+#color1{
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+#color5{
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}

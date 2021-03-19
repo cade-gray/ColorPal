@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css?family=Noticia+Text|Patrick+Hand&display=swap');
+.App{
+    font-family: 'Noticia Text', serif;
+    height: 100vh;
+    width: 100vw;
+}
+input:focus{
+    outline: none;
+}
+button:focus{
+    outline: none;
+}
+.header{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.headerText{
+    margin: 0px;
+    font-family: 'Patrick Hand', cursive;
+    font-size: 65px;
+    color: #222;
+}
+header .headerText:hover{
+    transform: translateY(2px);
+}
+.userButtDiv{
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+}
+.headerButt{
+    width: 75px;
+    height: 75px;
+    border-radius: 100%;
+    border-style: none;
+    color: #fff;
+    font-size: 50px;
+    box-shadow: rgba(0, 0, 0, 0.123) 4px 5px 4px;
+    text-align: center;
+}
+.createButt{
+    background: #07FF88;
+    color: #222;
+}
+.profileButt{
+    background: #07D2FF;
+    color: #222;
+}
+.logoutButt{
+    background: #222;
+    color: #fff;
+}
+/* All buttons in application */
+button{
+    border-style: none;
+}
+button:hover{
+    transform: translateY(2px);
+}
+
+button .new { 
+    display: none;
+    font-size: 15px;
+}
+button:hover .plus { 
+    display: none; 
+}
+button:hover .new { 
+    display: flex;
+    justify-content: center; 
+}
+button .buttText{
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+button .hoverIcon { 
+    display: none;
+    font-size: 25px;
+}
+button:hover .buttText { 
+    display: none; 
+}
+button:hover .hoverIcon { 
+    display: flex;
+    justify-content: center; 
+}
