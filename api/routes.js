@@ -8,20 +8,6 @@ var User = require("./Models/userModel.js");
 var Palette = require("./Models/paletteModel.js");
 var Like = require("./Models/likeModel.js");
 
-router.get("/", async (req, res) => {
-  res.send("Welcome to the ColorPal API🎨");
-});
-
-router.get("/bcrypt", async (req, res) => {
-  bcrypt.genSalt(saltRounds, function (err, salt) {
-    console.log(salt);
-    bcrypt.hash("password", salt, function (err, hash) {
-      console.log(hash);
-      res.send(hash);
-    });
-  });
-});
-
 // Retrieve all palettes from database
 router.get("/palettes", async function (req, res) {
   try {
@@ -66,6 +52,7 @@ router.get("/login/:username/:password", async function (req, res) {
     throw error;
   }
 });
+
 // Add new user to database
 router.post("/users/:username/:password", async function (req, res) {
   var username = req.params.username;
