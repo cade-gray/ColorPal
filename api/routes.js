@@ -1,11 +1,25 @@
 const express = require("express");
 const router = express.Router();
+
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+
 var User = require("./Models/userModel.js");
 var Palette = require("./Models/paletteModel.js");
 var Like = require("./Models/likeModel.js");
 
 router.get("/", async (req, res) => {
   res.send("Welcome to the ColorPal API🎨");
+});
+
+router.get("/bcrypt", async (req, res) => {
+  bcrypt.genSalt(saltRounds, function (err, salt) {
+    console.log(salt);
+    bcrypt.hash("password", salt, function (err, hash) {
+      console.log(hash);
+      res.send(hash);
+    });
+  });
 });
 
 // Retrieve all palettes from database
@@ -25,17 +39,28 @@ router.get("/palettes", async function (req, res) {
 router.get("/login/:username/:password", async function (req, res) {
   try {
     const query = await User.find({ username: req.params.username });
-    var match = false;
-    var id = "";
-    if (query[0].password === req.params.password) {
-      match = true;
-      id = query[0]._id;
-    } else match = false;
-
-    res.json({
-      match: match,
-      id: id,
-    });
+    console.log(query);
+    if (query.length != 0) {
+      var match = false;
+      var id = "";
+      bcrypt
+        .compare(req.params.password, query[0].password)
+        .then(function (result) {
+          if (result == true) {
+            match = true;
+            id = query[0]._id;
+          } else {
+            match = false;
+          }
+          res.json({
+            match: match,
+            id: id,
+          });
+        });
+    } else {
+      res.json({ message: "User does not exist" });
+      console.log("User does not exist");
+    }
   } catch (error) {
     console.log("Something went wrong");
     throw error;
@@ -45,18 +70,27 @@ router.get("/login/:username/:password", async function (req, res) {
 router.post("/users/:username/:password", async function (req, res) {
   var username = req.params.username;
   var password = req.params.password;
-  try {
-    var result = await User.create({ username: username, password: password });
-    if (result) {
-      res.status(201).send("User created");
-    } else {
-      res.status(500).send("Username is already taken");
+
+  bcrypt.hash(password, saltRounds).then(async function (hashedPass) {
+    try {
+      const query = await User.find({ username: req.params.username });
+      if (query.length == 0) {
+        var result = await User.create({
+          username: username,
+          password: hashedPass,
+        });
+        if (result) {
+          res.status(201).send("User created");
+        }
+      } else {
+        res.status(409).send("Username is already taken");
+      }
+    } catch (error) {
+      console.log("Something went wrong");
+      res.status(500).send("There was an issue creating a new user");
+      throw error;
     }
-  } catch (error) {
-    console.log("Something went wrong");
-    res.status(500).send("Username is already taken");
-    throw error;
-  }
+  });
 });
 
 //PALETTE ROUTES
